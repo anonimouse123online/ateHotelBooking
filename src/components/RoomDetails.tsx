@@ -2,11 +2,20 @@ import {
   Building2,
   CalendarDays,
   Car,
+  CigaretteOff,
+  Contact,
+  Dog,
   Droplets,
+  Dumbbell,
   Home,
+  Mail,
   MapPin,
-  TramFront,
+  Phone,
+  Shirt,
+  ShowerHead,
+  Sparkles,
   Users,
+  Waves,
   Wifi,
   Zap,
 } from "lucide-react";
@@ -38,29 +47,54 @@ const inclusions = [
     description: "Share the apartment with a welcoming family of three.",
   },
   {
-    icon: <Building2 size={24} />,
-    title: "Apartment living",
-    description: "A comfortable room inside a Southbank apartment.",
-  },
-  {
-    icon: <TramFront size={24} />,
-    title: "Convenient location",
-    description: "Easy access to Melbourne workplaces and local services.",
-  },
-  {
     icon: <Home size={24} />,
-    title: "Welcoming home",
-    description: "A peaceful and comfortable space for your Melbourne stay.",
+    title: "Apartment living",
+    description:
+      "A comfortable private room on the 18th floor of a Southbank apartment.",
+  },
+  {
+    icon: <Building2 size={24} />,
+    title: "Melbourne city views",
+    description:
+      "Enjoy beautiful Melbourne city lights and views from the apartment.",
+  },
+  {
+    icon: <Shirt size={24} />,
+    title: "Built-in wardrobe",
+    description:
+      "The room includes a built-in robe for convenient clothing storage.",
+  },
+];
+
+const buildingFacilities = [
+  {
+    icon: <Dumbbell size={26} />,
+    title: "Gym",
+    description: "Access to the apartment building's gym facilities.",
+  },
+  {
+    icon: <Sparkles size={26} />,
+    title: "Sauna",
+    description: "Relax and unwind using the building's sauna.",
+  },
+  {
+    icon: <Waves size={26} />,
+    title: "Swimming pool",
+    description: "Enjoy access to the building's indoor swimming pool.",
   },
 ];
 
 function RoomDetails() {
   return (
-    <section className="details-section">
+    <section className="room-details-section">
       <div className="container">
         <div className="section-heading">
           <p className="section-label">What is included</p>
           <h2>Room and accommodation details</h2>
+          <p>
+            A comfortable private room with a queen-size bed and built-in
+            robe, located on the 18th floor of a Southbank apartment.
+          </p>
         </div>
 
         <div className="amenities-grid">
@@ -71,6 +105,24 @@ function RoomDetails() {
               <div>
                 <h3>{item.title}</h3>
                 <p>{item.description}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="section-heading facilities-heading">
+          <p className="section-label">Building facilities</p>
+          <h2>Facilities available during your stay</h2>
+        </div>
+
+        <div className="amenities-grid facilities-grid">
+          {buildingFacilities.map((facility) => (
+            <article className="amenity-card" key={facility.title}>
+              <div className="amenity-icon">{facility.icon}</div>
+
+              <div>
+                <h3>{facility.title}</h3>
+                <p>{facility.description}</p>
               </div>
             </article>
           ))}
@@ -133,7 +185,63 @@ function RoomDetails() {
 
             <p>Electricity, water, and Wi-Fi are included.</p>
           </article>
+
+          <article className="information-card">
+            <Contact size={25} />
+
+            <h3>Tenant requirements</h3>
+
+            <p>
+              <strong>Female tenant only</strong>
+            </p>
+
+            <p>No couples are permitted.</p>
+
+            <p className="requirement-line">
+              <Dog size={18} />
+              <span>No pets</span>
+            </p>
+
+            <p className="requirement-line">
+              <CigaretteOff size={18} />
+              <span>No smoking</span>
+            </p>
+          </article>
         </div>
+
+        <article className="contact-card">
+          <div>
+            <p className="section-label">Interested in the room?</p>
+            <h2>Contact us directly</h2>
+            <p>
+              Get in touch to ask about availability or arrange your
+              short-term stay.
+            </p>
+          </div>
+
+          <div className="contact-options">
+            <a href="tel:0450532627" className="contact-option">
+              <Phone size={22} />
+
+              <div>
+                <span>Call or message</span>
+                <strong>0450 532 627</strong>
+              </div>
+            </a>
+
+            <a
+              href="mailto:hardipero@gmail.com"
+              className="contact-option"
+            >
+              <Mail size={22} />
+
+              <div>
+                <span>Email</span>
+                <strong>hardipero@gmail.com</strong>
+              </div>
+            </a>
+          </div>
+        </article>
 
         <article className="about-card">
           <p className="section-label">About the household</p>
@@ -147,24 +255,25 @@ function RoomDetails() {
           </p>
 
           <p>
-            This apartment has been more than just a place to live. It has been
-            our little sanctuary, filled with wonderful memories shared with
-            family and friends. Its location has been incredibly convenient,
-            with easy access to our workplaces and our daughter&apos;s
-            childcare, making everyday life easier for our family.
+            This apartment has been more than just a place to live. It has
+            been our little sanctuary, filled with wonderful memories shared
+            with family and friends. Its location has been incredibly
+            convenient, with easy access to our workplaces and our
+            daughter&apos;s childcare, making everyday life easier for our
+            family.
           </p>
 
           <p>
-            Earlier this year, we decided to rent out our spare room. Our first
-            tenant was a fellow Filipino who came to Australia to prepare for
-            her OSCE examination. We are delighted that she successfully passed
-            her examination while staying here, and we are happy to have been
-            part of her journey.
+            Earlier this year, we decided to rent out our spare room. Our
+            first tenant was a fellow Filipino who came to Australia to
+            prepare for her OSCE examination. We are delighted that she
+            successfully passed her examination while staying here, and we
+            are happy to have been part of her journey.
           </p>
 
           <p>
-            We hope our home will continue to provide comfort, convenience, and
-            a welcoming space for its next tenant.
+            We hope our home will continue to provide comfort, convenience,
+            and a welcoming space for its next tenant.
           </p>
         </article>
       </div>

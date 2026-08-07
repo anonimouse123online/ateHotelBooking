@@ -2,18 +2,25 @@ import { MapPin, Sparkles } from "lucide-react";
 import Gallery from "./components/Gallery";
 import RoomDetails from "./components/RoomDetails";
 import BookingForm from "./components/BookingForm";
+import heroImage from "./assets/ate1.jpg";
 import "./App.css";
 
 function App() {
   return (
     <main>
-      <section className="hero hero-placeholder">
-        <div className="hero-background-text">Room photo coming soon</div>
-
+      {/* HERO SECTION */}
+      <section
+        className="hero"
+        style={{
+          backgroundImage: `url(${heroImage})`,
+        }}
+      >
         <div className="hero-overlay">
           <p className="hero-label">Short-term accommodation</p>
 
-          <h1>Comfortable Spare Room in Southbank</h1>
+          <h1>
+            Queen-Size Room with Melbourne City Views
+          </h1>
 
           <div className="hero-location">
             <MapPin size={18} />
@@ -22,6 +29,7 @@ function App() {
         </div>
       </section>
 
+      {/* INTRODUCTION */}
       <section className="container intro-section">
         <div>
           <div className="rating">
@@ -29,23 +37,32 @@ function App() {
             <span>Welcoming family home</span>
           </div>
 
-          <h2>Looking for short-term accommodation in Melbourne?</h2>
+          <h2>
+            Comfortable apartment living in the heart of Southbank
+          </h2>
 
           <p className="description">
-            One of our spare rooms is available in our family apartment in
-            Southbank. The room is suitable for someone looking for a
-            comfortable, convenient, and welcoming place to stay in Melbourne.
+            A private room with a queen-size bed and built-in robe is
+            available in our family apartment on the 18th floor in
+            Southbank. Enjoy a comfortable stay with beautiful Melbourne
+            city lights and convenient access to local workplaces,
+            transport, shops, and services.
+          </p>
+
+          <p className="description">
+            The room is available to one female tenant only. Couples, pets,
+            and smoking are not permitted.
           </p>
 
           <div className="stay-summary">
             <div>
-              <strong>4 weeks</strong>
-              <span>Minimum stay</span>
+              <strong>Queen bed</strong>
+              <span>With built-in robe</span>
             </div>
 
             <div>
-              <strong>8 weeks</strong>
-              <span>Maximum stay</span>
+              <strong>4–8 weeks</strong>
+              <span>Short-term stay</span>
             </div>
 
             <div>
@@ -63,18 +80,41 @@ function App() {
           <a href="#booking" className="primary-button">
             Send an inquiry
           </a>
+
+          <a href="tel:0450532627" className="secondary-button">
+            Call 0450 532 627
+          </a>
         </div>
       </section>
 
+      {/* GALLERY */}
       <Gallery />
 
+      {/* ROOM DETAILS */}
       <RoomDetails />
 
+      {/* BOOKING */}
       <BookingForm />
 
+      {/* FOOTER */}
       <footer>
         <p>Southbank Short-Term Accommodation</p>
-        <small>Melbourne, Victoria, Australia</small>
+
+        <small>
+          Queen-size room on the 18th floor in Southbank, Melbourne
+        </small>
+
+        <div className="footer-contact">
+          <a href="tel:0450532627">
+            0450 532 627
+          </a>
+
+          <span>•</span>
+
+          <a href="mailto:hardipero@gmail.com">
+            hardipero@gmail.com
+          </a>
+        </div>
       </footer>
     </main>
   );
