@@ -12,7 +12,6 @@ import {
   MapPin,
   Phone,
   Shirt,
-  ShowerHead,
   Sparkles,
   Users,
   Waves,
