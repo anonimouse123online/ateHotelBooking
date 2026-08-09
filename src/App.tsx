@@ -1,4 +1,4 @@
-import { MapPin, Sparkles } from "lucide-react";
+import { MapPin } from "lucide-react";
 import Gallery from "./components/Gallery";
 import RoomDetails from "./components/RoomDetails";
 import BookingForm from "./components/BookingForm";
@@ -33,12 +33,12 @@ function App() {
       <section className="container intro-section">
         <div>
           <div className="rating">
-            <Sparkles size={18} />
-            <span>Welcoming family home</span>
+            {/*<Sparkles size={18} />
+            {/*<span>Welcoming family home</span>*/}
           </div>
 
           <h2>
-            Comfortable apartment living in the heart of Southbank
+            Comfortable  Private room in Southbank with Melbourne city view  
           </h2>
 
           <p className="description">

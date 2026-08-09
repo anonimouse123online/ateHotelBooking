@@ -6,18 +6,19 @@ import {
   Contact,
   Dog,
   Droplets,
-  Dumbbell,
-  Home,
   Mail,
   MapPin,
   Phone,
   Shirt,
   Sparkles,
   Users,
-  Waves,
   Wifi,
   Zap,
 } from "lucide-react";
+
+import gymImg from "../assets/gym.jpg";
+import saunaImg from "../assets/sauna.jpg";
+import poolImg from "../assets/pool.jpg";
 
 const inclusions = [
   {
@@ -46,13 +47,13 @@ const inclusions = [
     description: "Share the apartment with a welcoming family of three.",
   },
   {
-    icon: <Home size={24} />,
+    icon: <Building2 size={24} />,
     title: "Apartment living",
     description:
       "A comfortable private room on the 18th floor of a Southbank apartment.",
   },
   {
-    icon: <Building2 size={24} />,
+    icon: <Sparkles size={24} />,
     title: "Melbourne city views",
     description:
       "Enjoy beautiful Melbourne city lights and views from the apartment.",
@@ -67,17 +68,17 @@ const inclusions = [
 
 const buildingFacilities = [
   {
-    icon: <Dumbbell size={26} />,
+    image: gymImg,
     title: "Gym",
     description: "Access to the apartment building's gym facilities.",
   },
   {
-    icon: <Sparkles size={26} />,
+    image: saunaImg,
     title: "Sauna",
     description: "Relax and unwind using the building's sauna.",
   },
   {
-    icon: <Waves size={26} />,
+    image: poolImg,
     title: "Swimming pool",
     description: "Enjoy access to the building's indoor swimming pool.",
   },
@@ -85,11 +86,13 @@ const buildingFacilities = [
 
 function RoomDetails() {
   return (
-    <section className="room-details-section">
+    <section className="room-details">
       <div className="container">
         <div className="section-heading">
           <p className="section-label">What is included</p>
+
           <h2>Room and accommodation details</h2>
+
           <p>
             A comfortable private room with a queen-size bed and built-in
             robe, located on the 18th floor of a Southbank apartment.
@@ -117,7 +120,13 @@ function RoomDetails() {
         <div className="amenities-grid facilities-grid">
           {buildingFacilities.map((facility) => (
             <article className="amenity-card" key={facility.title}>
-              <div className="amenity-icon">{facility.icon}</div>
+              <div className="amenity-icon">
+                <img
+                  src={facility.image}
+                  alt={facility.title}
+                  className="facility-image"
+                />
+              </div>
 
               <div>
                 <h3>{facility.title}</h3>
@@ -212,6 +221,7 @@ function RoomDetails() {
           <div>
             <p className="section-label">Interested in the room?</p>
             <h2>Contact us directly</h2>
+
             <p>
               Get in touch to ask about availability or arrange your
               short-term stay.
