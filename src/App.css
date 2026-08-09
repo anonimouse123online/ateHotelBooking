@@ -846,3 +846,202 @@ footer small {
     grid-column: auto;
   }
 }
+/* =========================================
+   CONTACT SECTION
+========================================= */
+
+.contact-card {
+  width: 100%;
+  max-width: 560px;
+  box-sizing: border-box;
+
+  background: #ffffff;
+  border-radius: 28px;
+  padding: 48px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  color: #1f2937;
+}
+
+.contact-card .form-title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.contact-card .form-title h3 {
+  margin: 0;
+  font-size: 32px;
+  line-height: 1.2;
+  color: #17211c;
+}
+
+.contact-card-description {
+  width: 100%;
+  margin: 0 0 28px;
+
+  color: #667085;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.contact-benefits {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  margin-bottom: 32px;
+}
+
+.contact-benefits div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  width: 100%;
+}
+
+.contact-benefits svg {
+  flex: 0 0 auto;
+}
+
+.contact-benefits span {
+  font-size: 15px;
+  line-height: 1.4;
+  color: #344054;
+}
+
+
+/* WHATSAPP */
+
+.whatsapp-contact-button {
+  width: 100%;
+  min-height: 56px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  box-sizing: border-box;
+
+  border-radius: 12px;
+
+  background: #cc9459;
+  color: #ffffff;
+
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+}
+
+.whatsapp-contact-button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+
+/* DIVIDER */
+
+.contact-divider {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin: 20px 0;
+
+  color: #98a2b3;
+  font-size: 13px;
+}
+
+.contact-divider::before,
+.contact-divider::after {
+  content: "";
+  height: 1px;
+  background: #e4e7ec;
+  flex: 1;
+}
+
+
+/* EMAIL */
+
+.email-contact-button {
+  width: 100%;
+  min-height: 56px;
+
+  box-sizing: border-box;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  border: 1px solid #d0d5dd;
+  border-radius: 12px;
+
+  background: #ffffff;
+  color: #344054;
+
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.email-contact-button:hover {
+  background: #f9fafb;
+  border-color: #98a2b3;
+}
+
+
+/* DISCLAIMER */
+
+.contact-card .form-disclaimer {
+  width: 100%;
+  margin: 22px 0 0;
+
+  text-align: center;
+
+  color: #667085;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 768px) {
+  .booking-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .contact-card {
+    max-width: 100%;
+    padding: 30px 24px;
+    border-radius: 20px;
+  }
+
+  .contact-card .form-title h3 {
+    font-size: 26px;
+  }
+}

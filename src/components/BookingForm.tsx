@@ -1,171 +1,46 @@
-import { useMemo, useState } from "react";
-import type { FormEvent } from "react";
 import {
-  CalendarDays,
   Mail,
   MapPin,
   MessageCircle,
   Phone,
+  CheckCircle2,
 } from "lucide-react";
 
-interface BookingData {
-  name: string;
-  phone: string;
-  email: string;
-  moveInDate: string;
-  moveOutDate: string;
-  occupants: string;
-  message: string;
-  agreesToRequirements: boolean;
-}
-
-const initialForm: BookingData = {
-  name: "",
-  phone: "",
-  email: "",
-  moveInDate: "",
-  moveOutDate: "",
-  occupants: "1",
-  message: "",
-  agreesToRequirements: false,
-};
-
-function calculateWeeks(startDate: string, endDate: string): number {
-  if (!startDate || !endDate) {
-    return 0;
-  }
-
-  const start = new Date(`${startDate}T00:00:00`);
-  const end = new Date(`${endDate}T00:00:00`);
-
-  const difference = end.getTime() - start.getTime();
-
-  if (difference <= 0) {
-    return 0;
-  }
-
-  return difference / (1000 * 60 * 60 * 24 * 7);
-}
-
 function BookingForm() {
-  const [formData, setFormData] =
-    useState<BookingData>(initialForm);
+  const whatsappNumber = "61450532627";
 
-  const [formError, setFormError] = useState("");
+  const whatsappMessage =
+    "Hi! I'm interested in the Southbank room. Is it still available?";
 
-  const numberOfWeeks = useMemo(
-    () =>
-      calculateWeeks(
-        formData.moveInDate,
-        formData.moveOutDate
-      ),
-    [formData.moveInDate, formData.moveOutDate]
-  );
-
-  const estimatedPrice =
-    numberOfWeeks > 0
-      ? Math.ceil(numberOfWeeks) * 250
-      : 0;
-
-  const today = new Date().toISOString().split("T")[0];
-
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    setFormError("");
-
-    if (numberOfWeeks < 4) {
-      setFormError(
-        "The minimum accommodation period is 4 weeks."
-      );
-      return;
-    }
-
-    if (numberOfWeeks > 8) {
-      setFormError(
-        "The maximum accommodation period is 8 weeks."
-      );
-      return;
-    }
-
-    if (formData.occupants !== "1") {
-      setFormError(
-        "The room is available for one female occupant only."
-      );
-      return;
-    }
-
-    if (!formData.agreesToRequirements) {
-      setFormError(
-        "Please confirm that you meet the tenant requirements."
-      );
-      return;
-    }
-
-    const whatsappNumber = "61450532627";
-
-    const message = `
-Hello! I would like to inquire about the Southbank spare room.
-
-Name: ${formData.name}
-Phone: ${formData.phone}
-Email: ${formData.email}
-Preferred move-in date: ${formData.moveInDate}
-Preferred move-out date: ${formData.moveOutDate}
-Length of stay: ${numberOfWeeks.toFixed(1)} weeks
-Number of occupants: ${formData.occupants}
-Estimated accommodation cost: $${estimatedPrice}
-
-About me:
-${formData.message || "No additional message provided."}
-
-I understand the following:
-- The room is for one female occupant only
-- No couples
-- No pets
-- No smoking
-- Rent is $250 per week
-- Electricity, water, and Wi-Fi are included
-- Minimum stay is 4 weeks
-- Maximum stay is 8 weeks
-`.trim();
-
-    const whatsappUrl =
-      `https://wa.me/${whatsappNumber}` +
-      `?text=${encodeURIComponent(message)}`;
-
-    window.open(
-      whatsappUrl,
-      "_blank",
-      "noopener,noreferrer"
-    );
-  };
+  const whatsappUrl =
+    `https://wa.me/${whatsappNumber}` +
+    `?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <section className="booking-section" id="booking">
       <div className="container booking-layout">
+        {/* LEFT SIDE */}
         <div className="booking-information">
           <p className="section-label">
             Interested in the room?
           </p>
 
-          <h2>Send an accommodation inquiry</h2>
+          <h2>Get in touch</h2>
 
           <p>
-            Complete the form with your preferred dates.
-            The household will contact you to discuss
-            availability and confirm the accommodation.
+            Interested in staying at the Southbank apartment?
+            Contact us directly to ask about availability,
+            move-in dates, or any other questions.
           </p>
 
           <div className="contact-list">
             <a href="tel:0450532627">
               <Phone size={20} />
-
               <span>0450 532 627</span>
             </a>
 
             <a href="mailto:hardipero@gmail.com">
               <Mail size={20} />
-
               <span>hardipero@gmail.com</span>
             </a>
 
@@ -190,226 +65,64 @@ I understand the following:
           </div>
         </div>
 
-        <form
-          className="booking-form"
-          onSubmit={handleSubmit}
-        >
+        {/* RIGHT SIDE */}
+        <div className="contact-card">
           <div className="form-title">
             <MessageCircle size={25} />
-
-            <h3>Accommodation inquiry</h3>
+            <h3>Contact us</h3>
           </div>
 
-          <div className="form-group">
-            <label htmlFor="name">Full name</label>
+          <p className="contact-card-description">
+            Have a question about the room? Send us a
+            message and we'll be happy to discuss
+            availability and your preferred dates.
+          </p>
 
-            <input
-              id="name"
-              type="text"
-              placeholder="Enter your full name"
-              value={formData.name}
-              onChange={(event) =>
-                setFormData({
-                  ...formData,
-                  name: event.target.value,
-                })
-              }
-              required
-            />
-          </div>
-
-          <div className="date-grid">
-            <div className="form-group">
-              <label htmlFor="phone">
-                Phone number
-              </label>
-
-              <input
-                id="phone"
-                type="tel"
-                placeholder="Enter your phone number"
-                value={formData.phone}
-                onChange={(event) =>
-                  setFormData({
-                    ...formData,
-                    phone: event.target.value,
-                  })
-                }
-                required
-              />
+          <div className="contact-benefits">
+            <div>
+              <CheckCircle2 size={19} />
+              <span>Ask about current availability</span>
             </div>
 
-            <div className="form-group">
-              <label htmlFor="email">
-                Email address
-              </label>
+            <div>
+              <CheckCircle2 size={19} />
+              <span>Discuss your preferred move-in date</span>
+            </div>
 
-              <input
-                id="email"
-                type="email"
-                placeholder="Enter your email"
-                value={formData.email}
-                onChange={(event) =>
-                  setFormData({
-                    ...formData,
-                    email: event.target.value,
-                  })
-                }
-                required
-              />
+            <div>
+              <CheckCircle2 size={19} />
+              <span>Ask questions about the apartment</span>
             </div>
           </div>
 
-          <div className="date-grid">
-            <div className="form-group">
-              <label htmlFor="moveInDate">
-                Preferred move-in date
-              </label>
-
-              <div className="input-icon">
-                <CalendarDays size={18} />
-
-                <input
-                  id="moveInDate"
-                  type="date"
-                  min={today}
-                  value={formData.moveInDate}
-                  onChange={(event) =>
-                    setFormData({
-                      ...formData,
-                      moveInDate: event.target.value,
-                    })
-                  }
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="moveOutDate">
-                Preferred move-out date
-              </label>
-
-              <div className="input-icon">
-                <CalendarDays size={18} />
-
-                <input
-                  id="moveOutDate"
-                  type="date"
-                  min={formData.moveInDate || today}
-                  value={formData.moveOutDate}
-                  onChange={(event) =>
-                    setFormData({
-                      ...formData,
-                      moveOutDate: event.target.value,
-                    })
-                  }
-                  required
-                />
-              </div>
-            </div>
-          </div>
-
-          {numberOfWeeks > 0 && (
-            <div className="booking-estimate">
-              <div>
-                <span>Length of stay</span>
-                <strong>
-                  {numberOfWeeks.toFixed(1)} weeks
-                </strong>
-              </div>
-
-              <div>
-                <span>
-                  Estimated accommodation cost
-                </span>
-
-                <strong>${estimatedPrice}</strong>
-              </div>
-            </div>
-          )}
-
-          <div className="form-group">
-            <label htmlFor="occupants">
-              Number of occupants
-            </label>
-
-            <select
-              id="occupants"
-              value={formData.occupants}
-              onChange={(event) =>
-                setFormData({
-                  ...formData,
-                  occupants: event.target.value,
-                })
-              }
-            >
-              <option value="1">1 occupant</option>
-            </select>
-
-            <small className="input-note">
-              The room is available for one female
-              occupant only.
-            </small>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="message">
-              Tell us about yourself
-            </label>
-
-            <textarea
-              id="message"
-              placeholder="Introduce yourself, your occupation or studies, and the reason for your stay"
-              rows={5}
-              value={formData.message}
-              onChange={(event) =>
-                setFormData({
-                  ...formData,
-                  message: event.target.value,
-                })
-              }
-              required
-            />
-          </div>
-
-          <label className="requirements-checkbox">
-            <input
-              type="checkbox"
-              checked={formData.agreesToRequirements}
-              onChange={(event) =>
-                setFormData({
-                  ...formData,
-                  agreesToRequirements:
-                    event.target.checked,
-                })
-              }
-            />
-
-            <span>
-              I confirm that I am a female applicant,
-              will be the only occupant, do not smoke,
-              and will not bring pets.
-            </span>
-          </label>
-
-          {formError && (
-            <p className="form-error">{formError}</p>
-          )}
-
-          <button
-            type="submit"
-            className="submit-button"
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="submit-button whatsapp-contact-button"
           >
-            Send inquiry through WhatsApp
-          </button>
+            <MessageCircle size={20} />
+            Chat on WhatsApp
+          </a>
+
+          <div className="contact-divider">
+            <span>or</span>
+          </div>
+
+          <a
+            href="mailto:hardipero@gmail.com?subject=Southbank%20Room%20Inquiry&body=Hi%2C%20I'm%20interested%20in%20the%20Southbank%20room."
+            className="email-contact-button"
+          >
+            <Mail size={20} />
+            Send an Email
+          </a>
 
           <p className="form-disclaimer">
-            Sending an inquiry does not automatically
-            confirm the accommodation. Availability must
-            be confirmed by the household.
+            Please note that contacting us does not
+            automatically reserve the room. Availability
+            will be confirmed directly with you.
           </p>
-        </form>
+        </div>
       </div>
     </section>
   );
