@@ -16,16 +16,16 @@ function App() {
         }}
       >
         <div className="hero-overlay">
-          <p className="hero-label">Short-term accommodation</p>
+          {/*<p className="hero-label">Short-term accommodation</p>*/}
 
-          <h1>
+          {/*<h1>
             Queen-Size Room with Melbourne City Views
-          </h1>
+          </h1>*/}
 
-          <div className="hero-location">
+          {/*<div className="hero-location">
             <MapPin size={18} />
             <span>Southbank, Melbourne, Victoria</span>
-          </div>
+          </div>*/}
         </div>
       </section>
 

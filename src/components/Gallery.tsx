@@ -3,6 +3,10 @@ import cityView from "../assets/ate2.jpg";
 import bedroomTwo from "../assets/ate3.jpg";
 import bathroom from "../assets/ate4.jpg";
 
+import kitchen from "../assets/kitchen.jpg";
+import livingRoom from "../assets/livin.jpg";
+import diningArea from "../assets/dining.jpg";
+
 const galleryImages = [
   {
     title: "Main room",
@@ -11,7 +15,7 @@ const galleryImages = [
   },
   {
     title: "Melbourne city view",
-    description: "City view from the 18th-floor apartment",
+    description: "Beautiful city view from the 18th-floor apartment",
     image: cityView,
   },
   {
@@ -24,20 +28,36 @@ const galleryImages = [
     description: "Modern apartment bathroom",
     image: bathroom,
   },
+  {
+    title: "Kitchen",
+    description: "Modern kitchen with plenty of space for everyday cooking",
+    image: kitchen,
+  },
+  {
+    title: "Living room",
+    description: "Comfortable shared living area with natural light",
+    image: livingRoom,
+  },
+  {
+    title: "Dining area",
+    description: "Bright dining area overlooking the apartment surroundings",
+    image: diningArea,
+  },
 ];
 
 function Gallery() {
   return (
-    <section className="gallery-section">
+    <section className="gallery-section" id="gallery">
       <div className="container">
         <div className="section-heading">
-          <p className="section-label">The accommodation</p>
+          <span className="section-eyebrow">The accommodation</span>
 
-          <h2>Room gallery</h2>
+          <h2>Room & apartment gallery</h2>
 
           <p className="gallery-note">
-            View the bedroom, bathroom, and Melbourne city view from the
-            Southbank apartment.
+            Explore the private bedroom and shared spaces, including the
+            kitchen, living room, dining area, bathroom, and Melbourne city
+            views from the Southbank apartment.
           </p>
         </div>
 
