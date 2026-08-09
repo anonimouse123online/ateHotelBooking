@@ -1,4 +1,3 @@
-import { MapPin } from "lucide-react";
 import Gallery from "./components/Gallery";
 import RoomDetails from "./components/RoomDetails";
 import BookingForm from "./components/BookingForm";
