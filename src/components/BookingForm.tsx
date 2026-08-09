@@ -13,8 +13,8 @@ function BookingForm() {
     "Hi! I'm interested in the Southbank room. Is it still available?";
 
   const whatsappUrl =
-    `https://wa.me/${whatsappNumber}` +
-    `?text=${encodeURIComponent(whatsappMessage)}`;
+  `https://api.whatsapp.com/send?phone=${whatsappNumber}` +
+  `&text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <section className="booking-section" id="booking">
